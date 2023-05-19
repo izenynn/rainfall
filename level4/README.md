@@ -100,7 +100,6 @@ Take the flag and let's go!
 For the sake of science, we can une the `$` modifier with `%n`, but it's boring:
 ```bash
 bc
-bc
 16930116 - 4
 16930112
 quit
