@@ -68,7 +68,7 @@ echo -e 'A%4$c' | ./level3
 That would print our `A`, and the format `%4$c` that will be our `A`.
 
 This is cool because with this vuln we can write an address, and dereference it
-with `%4$s`, but, what we need to do is to overwrite the value of `m`...
+with `%4$c`, but, what we need to do is to overwrite the value of `m`...
 
 ## Exploit
 
@@ -93,7 +93,7 @@ where to save it? Well, everytime `printf` pops an argument, let's say, `%p`,
 we increase the internal stack pointer of the format function by 4 bytes.
 
 So, remember `%n` writes to an address, that means it writes to a memory
-location, so, knowing that our string starts at 4 * 4 bytes...
+location, so, knowing that our string starts at 3 * 4 bytes...
 
 First, obtain the address of the global variable `m`, with a decompiler or with
 `nm`, that's the address we want to write to: `0804988c`
@@ -103,7 +103,7 @@ So our payload starts with the address we wanna writo to (in little endian):
 printf '\x8c\x98\x04\x08' + "..." | ./level3
 ```
 
-Then, we need to move the internal stack pointer 4 bytes, take this for
+Then, we need to move the internal stack pointer 3 * 4 bytes, take this for
 example:
 ```bash
 level3@RainFall:~$ ./level3
