@@ -22,7 +22,7 @@ if [ "$1" -eq 10 ]; then
     previous_user="level9"
 elif [ "$1" -ge 10 ]; then
     previous_level="$((10#$1 - 11))"
-    previous_user="bonus$((10#$1 - 1))"
+    previous_user="bonus$previous_level"
 else
     previous_level="$((10#$1 - 1))"
     previous_user="level$previous_level"
