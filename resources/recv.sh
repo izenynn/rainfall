@@ -11,7 +11,9 @@ if [ ! -d "$directory" ]; then
     mkdir "$directory"
 fi
 
-if [ "$1" -ge 10 ]; then
+if [ "$1" -eq 14 ]; then
+    user="end"
+elif [ "$1" -ge 10 ]; then
     user="bonus$((10#$1 - 10))"
 else
     user="level$1"
