@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-if [[ -z "$1" || -z "$2" ]]; then
-    echo "Receives a file from the machile in the './files' directory" >&2
-    echo "Usage: $0 LEVEL REMOTE_FILE" >&2
+if [[ -z "$1" ]]; then
+    echo "Receives the binary from the level and saves it on './files'" >&2
+    echo "Usage: $0 LEVEL" >&2
     exit 1
 fi
 
@@ -39,6 +39,6 @@ else
     export SSHPASS=$(cat "$flag_file")
 fi
 
-sshpass -e scp -P 4242 "$user"'@localhost:'"$2" "$directory"
+sshpass -e scp -P 4242 "$user"'@localhost:'"$user" "$directory"
 
 exit 0
